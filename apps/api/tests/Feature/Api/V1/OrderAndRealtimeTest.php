@@ -92,14 +92,15 @@ test('uploads real payment proof image and updates status to pending_verificatio
     ])->assertCreated();
 
     $orderCode = (string) $created->json('code');
-    $file = UploadedFile::fake()->create('bukti-bca.jpg', 120, 'image/jpeg');
+    $pngBytes = base64_decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==', true);
+    $file = UploadedFile::fake()->createWithContent('bukti-bca.png', is_string($pngBytes) ? $pngBytes : '');
 
     $this->withHeaders(spaHeaders())->post("/api/v1/orders/{$orderCode}/payment-proof", [
         'proof' => $file,
     ])
         ->assertOk()
         ->assertJsonPath('status', 'pending_verification')
-        ->assertJsonPath('paymentProofName', 'bukti-bca.jpg');
+        ->assertJsonPath('paymentProofName', 'bukti-bca.png');
 });
 
 test('admin can manage products, verify or reject orders, and rejecting restores product stock', function () {
