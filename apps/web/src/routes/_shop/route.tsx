@@ -11,7 +11,7 @@ export const Route = createFileRoute("/_shop")({
 function ShopLayout() {
   return (
     <Toaster>
-      <div>
+      <div className="delysa-glass-canvas min-h-dvh">
         <PromoTopBar />
         <ShopHeader />
         <Outlet />

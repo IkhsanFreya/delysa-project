@@ -1,5 +1,6 @@
 import { AtSign } from "lucide-react";
 import { SectionHeader } from "~/features/shop/components/storefront/section-header";
+import { DELYSA_CONTACT } from "~/features/shop/data/storefront";
 import bestSellersFixture from "~/mock/products/best-sellers.json";
 import type { UnifiedProduct } from "~/features/shop/types";
 
@@ -12,22 +13,24 @@ export function InstagramStrip() {
       className="mx-auto max-w-7xl px-4 pt-8 sm:px-6"
     >
       <SectionHeader
-        eyebrow="@delysafloristt"
+        eyebrow={DELYSA_CONTACT.instagramHandle}
         title="Koleksi Harian Instagram"
-        linkText="Follow @delysafloristt"
+        linkText={`Follow ${DELYSA_CONTACT.instagramHandle}`}
+        externalHref={DELYSA_CONTACT.instagramUrl}
       />
       <ul className="grid grid-cols-2 gap-3 sm:grid-cols-5">
         {photos.map((photo) => (
           <li key={photo.id} className="overflow-hidden rounded-xl">
             <a
-              href="#"
-              onClick={(e) => e.preventDefault()}
-              aria-label={`Foto Instagram ${photo.name} (segera hadir)`}
-              className="group block"
+              href={DELYSA_CONTACT.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Lihat ${photo.name} di Instagram ${DELYSA_CONTACT.instagramHandle}`}
+              className="group block focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#BE185D]"
             >
               <img
                 src={photo.image}
-                alt=""
+                alt={photo.name}
                 width={600}
                 height={600}
                 loading="lazy"
@@ -38,9 +41,9 @@ export function InstagramStrip() {
           </li>
         ))}
       </ul>
-      <p className="mt-3 flex items-center justify-center gap-1.5 text-xs text-[#6B7280]">
+      <p className="mt-3 flex items-center justify-center gap-1.5 text-xs text-[#57534E]">
         <AtSign size={14} aria-hidden="true" />
-        Tag @delysafloristt untuk tampil di sini
+        Tag {DELYSA_CONTACT.instagramHandle} untuk berbagi momen buket Anda
       </p>
     </section>
   );

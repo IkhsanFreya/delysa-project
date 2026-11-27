@@ -12,7 +12,7 @@ export function OrderNotFound({
 }) {
   return (
     <section className="mx-auto max-w-xl rounded-2xl border border-[#E5E7EB] bg-white p-5 text-center shadow-sm sm:p-7">
-      <span className="mx-auto flex size-12 items-center justify-center rounded-full bg-[#FFF3ED] text-[#FF6B35] ring-1 ring-[#FFE1D2]">
+      <span className="mx-auto flex size-12 items-center justify-center rounded-full bg-[#FDF2F8] text-[#BE185D] ring-1 ring-[#FBCFE8]">
         <PackageX size={23} aria-hidden="true" />
       </span>
       <h1 className="mt-3 text-lg font-extrabold tracking-tight text-[#1A1A1A]">

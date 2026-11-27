@@ -105,14 +105,14 @@ export function OrderSummary({
               setCouponError("");
             }}
             placeholder="CONTOH: DELYSAWISUDA"
-            className="flex-1 rounded-lg border border-[#E5E7EB] bg-white px-3 py-2 text-sm text-[#1A1A1A] placeholder:text-[#9CA3AF] focus:border-[#FF6B35] focus:outline-none focus:ring-1 focus:ring-[#FF6B35]"
+            className="flex-1 rounded-lg border border-[#D6CBC6] bg-white px-3 py-2 text-sm text-[#1C1917] placeholder:text-[#78716C] focus:border-[#BE185D] focus:outline-none focus:ring-1 focus:ring-[#BE185D]"
             aria-label="Kode kupon"
           />
           <Button
             type="button"
             onClick={handleApplyCoupon}
             size="sm"
-            className="shrink-0 rounded-full bg-[#111111] text-white hover:bg-[#2A2A2A]"
+            className="shrink-0 rounded-full bg-[#1C1917] text-white hover:bg-[#292524]"
           >
             Terapkan
           </Button>
@@ -149,15 +149,15 @@ export function OrderSummary({
           </div>
         )}
 
-        <div className="flex justify-between border-t border-[#E5E7EB] pt-3">
-          <dt className="text-base font-extrabold text-[#1A1A1A]">
+        <div className="flex justify-between border-t border-[#EAE2DE] pt-3">
+          <dt className="text-base font-extrabold text-[#1C1917]">
             Total Akhir
           </dt>
-          <dd className="text-base font-extrabold text-[#1A1A1A]">
+          <dd className="text-base font-extrabold text-[#BE185D] tabular-nums">
             {formatIDR(totals.grandTotal)}
           </dd>
         </div>
-        <p className="text-[11px] text-[#9CA3AF] text-center">
+        <p className="text-center text-[11px] text-[#57534E]">
           Termasuk PPn & garansi bunga mekar segar 100%
         </p>
 
@@ -168,14 +168,14 @@ export function OrderSummary({
                 <Button
                   type="button"
                   disabled
-                  className="w-full rounded-full bg-[#111111] text-white hover:bg-[#2A2A2A] disabled:bg-[#D1D5DB] disabled:text-[#9CA3AF]"
+                  className="w-full rounded-full bg-[#BE185D] text-white hover:bg-[#9D174D] disabled:bg-[#EAE2DE] disabled:text-[#57534E]"
                 >
                   Lanjut ke Pembayaran (Checkout) →
                 </Button>
               ) : (
                 <Button
                   render={<Link to="/checkout" search={{ step: "review" }} />}
-                  className="w-full rounded-full bg-[#111111] text-white hover:bg-[#2A2A2A]"
+                  className="w-full rounded-full bg-[#BE185D] text-white hover:bg-[#9D174D]"
                 >
                   Lanjut ke Pembayaran (Checkout) →
                 </Button>
@@ -183,7 +183,7 @@ export function OrderSummary({
               <Button
                 variant="ghost"
                 render={<Link to="/katalog" />}
-                className="w-full rounded-full text-[#6B7280] hover:bg-[#F3F4F6]"
+                className="w-full rounded-full text-[#57534E] hover:bg-[#FDF2F8] hover:text-[#9D174D]"
               >
                 <ChevronLeft size={14} aria-hidden="true" className="mr-1" />
                 Kembali Belanja Katalog
@@ -214,14 +214,14 @@ export function OrderSummary({
             },
           ].map((item) => (
             <li key={item.title} className="flex items-center gap-2.5">
-              <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[#FFF3ED] text-[#FF6B35]">
+              <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-[#FDF2F8] text-[#BE185D] ring-1 ring-[#FBCFE8]">
                 <item.icon size={16} aria-hidden="true" />
               </span>
               <span className="text-xs">
-                <span className="block font-medium text-[#1A1A1A]">
+                <span className="block font-medium text-[#1C1917]">
                   {item.title}
                 </span>
-                <span className="block text-[11px] text-[#6B7280]">
+                <span className="block text-[11px] text-[#57534E]">
                   {item.subtitle}
                 </span>
               </span>

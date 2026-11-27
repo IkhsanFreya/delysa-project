@@ -21,7 +21,7 @@ export function AdminShell({
     <SidebarProvider>
       <a
         href="#admin-main"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-[#C2410C] focus:shadow-lg focus:ring-2 focus:ring-[#FF6B35]"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-[#9D174D] focus:shadow-lg focus:ring-2 focus:ring-[#BE185D]"
       >
         Lewati ke konten utama
       </a>
@@ -29,7 +29,7 @@ export function AdminShell({
       <SidebarInset
         id="admin-main"
         tabIndex={-1}
-        className="min-w-0 max-w-full overflow-x-clip bg-[#F8F9FA]"
+        className="min-w-0 max-w-full overflow-x-clip bg-[#FAF7F5]"
       >
         <header className="sticky top-0 z-10 flex h-14 items-center gap-3 border-b border-[#E5E7EB] bg-white/95 px-3 backdrop-blur sm:px-4">
           <SidebarTrigger

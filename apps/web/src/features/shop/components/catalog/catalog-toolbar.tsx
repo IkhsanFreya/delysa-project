@@ -55,22 +55,23 @@ export function CatalogToolbar({
   return (
     <div className="flex flex-col gap-2">
       <div className="flex flex-col gap-2 md:flex-row md:flex-wrap md:items-center">
-        <div className="relative w-full md:w-auto md:min-w-32 md:flex-1">
-          <Search
-            size={16}
+        <div className="flex h-11 w-full items-center overflow-hidden rounded-xl border-[1.5px] border-[#8C7E77] bg-white shadow-[0_1px_2px_rgba(28,25,23,0.05)] transition-[border-color,box-shadow] focus-within:border-[#BE185D] focus-within:ring-3 focus-within:ring-[#BE185D]/20 md:w-auto md:min-w-44 md:flex-1">
+          <span
             aria-hidden="true"
-            className="absolute top-1/2 left-3 -translate-y-1/2 text-[#9CA3AF]"
-          />
+            className="flex h-full shrink-0 items-center border-r border-[#D6CBC6] bg-[#FAF7F5] px-3 text-[#57534E]"
+          >
+            <Search size={16} />
+          </span>
           <Input
             type="search"
             aria-label="Filter nama buket"
             placeholder="Filter nama buket…"
             value={draft}
             onChange={(e) => setDraft(e.target.value)}
-            className="h-10 rounded-xs border-[#E5E7EB] bg-white pr-4 pl-9 text-sm"
+            className="h-full flex-1 rounded-none border-0 bg-transparent px-3 text-sm text-[#1C1917] placeholder:text-[#6B625C] focus-visible:border-0 focus-visible:ring-0"
           />
         </div>
-        <Label className="w-full flex-col items-stretch gap-1.5 text-[11px] font-semibold tracking-wide text-[#6B7280] uppercase md:w-auto md:flex-row md:items-center">
+        <Label className="w-full flex-col items-stretch gap-1.5 text-[11px] font-semibold tracking-wide text-[#57534E] uppercase md:w-auto md:flex-row md:items-center">
           Kategori:
           <Select
             value={query.category ?? null}
@@ -78,21 +79,21 @@ export function CatalogToolbar({
           >
             <SelectTrigger
               aria-label="Filter kategori cepat"
-              className="h-10 w-full rounded-xs border-[#E5E7EB] bg-white px-3 text-xs font-medium normal-case text-[#1A1A1A] md:w-auto md:min-w-52"
+              className="h-11 w-full rounded-xl border-[1.5px] border-[#8C7E77]/80 bg-white px-3 text-xs font-medium normal-case text-[#1C1917] md:w-auto md:min-w-52"
             >
               <SelectValue placeholder="Semua" />
             </SelectTrigger>
-            <SelectContent alignItemWithTrigger={false} className="rounded-xs">
-              <SelectItem className="rounded-xs text-xs">Semua</SelectItem>
+            <SelectContent alignItemWithTrigger={false} className="rounded-lg">
+              <SelectItem className="rounded-md text-xs">Semua</SelectItem>
               {categories.map((c) => (
-                <SelectItem key={c} value={c} className="rounded-xs text-xs">
+                <SelectItem key={c} value={c} className="rounded-md text-xs">
                   {c} ({counts[c] ?? 0})
                 </SelectItem>
               ))}
             </SelectContent>
           </Select>
         </Label>
-        <Label className="w-full flex-col items-stretch gap-1.5 text-[11px] font-semibold tracking-wide text-[#6B7280] uppercase md:w-auto md:flex-row md:items-center">
+        <Label className="w-full flex-col items-stretch gap-1.5 text-[11px] font-semibold tracking-wide text-[#57534E] uppercase md:w-auto md:flex-row md:items-center">
           Urutkan:
           <Select
             value={query.sort ?? null}
@@ -100,19 +101,19 @@ export function CatalogToolbar({
           >
             <SelectTrigger
               aria-label="Urutkan produk"
-              className="h-10 w-full rounded-xs border-[#E5E7EB] bg-white px-3 text-xs font-medium normal-case text-[#1A1A1A] md:w-auto md:min-w-52"
+              className="h-11 w-full rounded-xl border-[1.5px] border-[#8C7E77]/80 bg-white px-3 text-xs font-medium normal-case text-[#1C1917] md:w-auto md:min-w-52"
             >
               <SelectValue placeholder="Paling Relevan" />
             </SelectTrigger>
-            <SelectContent alignItemWithTrigger={false} className="rounded-xs">
-              <SelectItem className="rounded-xs text-xs">
+            <SelectContent alignItemWithTrigger={false} className="rounded-lg">
+              <SelectItem className="rounded-md text-xs">
                 Paling Relevan
               </SelectItem>
               {SORT_OPTIONS.map((o) => (
                 <SelectItem
                   key={o.value}
                   value={o.value}
-                  className="rounded-xs text-xs"
+                  className="rounded-md text-xs"
                 >
                   {o.label}
                 </SelectItem>

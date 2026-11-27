@@ -82,7 +82,7 @@ export function MetodeBayarStep({
       <div className="rounded-xl border border-[#E5E7EB] bg-white p-4">
         <Field data-invalid={!!errors.paymentMethod}>
           <FieldLabel htmlFor="payment-method">
-            Metode Pembayaran <span className="text-[#FF6B35]">*</span>
+            Metode Pembayaran <span className="text-[#BE185D]">*</span>
           </FieldLabel>
           <Select
             value={paymentMethod || null}
@@ -127,7 +127,7 @@ export function MetodeBayarStep({
               className="mt-4 border-t border-[#E5E7EB] pt-4"
             >
               <div className="flex items-start gap-3">
-                <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#FFF3ED] text-[#FF6B35]">
+                <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#FDF2F8] text-[#BE185D] ring-1 ring-[#FBCFE8]">
                   {method.bank ? (
                     <Landmark size={20} aria-hidden="true" />
                   ) : (
@@ -182,7 +182,7 @@ export function MetodeBayarStep({
                       key={step}
                       className="flex gap-2 text-xs leading-relaxed text-[#6B7280]"
                     >
-                      <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-[#FFF3ED] text-[11px] font-bold text-[#FF6B35]">
+                      <span className="flex size-5 shrink-0 items-center justify-center rounded-full bg-[#FDF2F8] text-[11px] font-bold text-[#9D174D]">
                         {index + 1}
                       </span>
                       <span>{step}</span>
@@ -235,7 +235,7 @@ export function MetodeBayarStep({
         <Button
           type="button"
           onClick={onNext}
-          className="rounded-full bg-[#111111] text-white hover:bg-[#2A2A2A]"
+          className="rounded-full bg-[#BE185D] text-white hover:bg-[#9D174D]"
         >
           Lanjut ke Ringkasan
           <ArrowRight size={16} aria-hidden="true" className="ml-1" />

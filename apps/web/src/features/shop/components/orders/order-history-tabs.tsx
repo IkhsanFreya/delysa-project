@@ -26,10 +26,10 @@ export function OrderHistoryTabs({
             aria-pressed={active}
             onClick={() => onChange(tab.value)}
             className={cn(
-              "inline-flex shrink-0 items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B35]/40",
+              "inline-flex shrink-0 items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors outline-none focus-visible:ring-2 focus-visible:ring-[#BE185D]/40",
               active
-                ? "border-[#FF6B35] bg-[#FF6B35] text-[#21140D]"
-                : "border-[#E5E7EB] bg-white text-[#4B5563] hover:border-[#FFD6C2] hover:bg-[#FFFBF7]",
+                ? "border-[#BE185D] bg-[#BE185D] text-white"
+                : "border-[#EAE2DE] bg-white text-[#57534E] hover:border-[#FBCFE8] hover:bg-[#FDF2F8]",
             )}
           >
             {tab.label}
@@ -37,8 +37,8 @@ export function OrderHistoryTabs({
               className={cn(
                 "rounded-full px-1.5 py-0.5 text-[10px] font-bold tabular-nums",
                 active
-                  ? "bg-[#21140D]/15 text-[#21140D]"
-                  : "bg-[#F3F4F6] text-[#6B7280]",
+                  ? "bg-white/20 text-white"
+                  : "bg-[#F5F0ED] text-[#57534E]",
               )}
             >
               {counts[tab.value]}

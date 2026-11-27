@@ -5,7 +5,7 @@ import { formatIDR } from "~/features/shop/lib/format";
 import { cn } from "~/lib/utils";
 
 /**
- * Bar pembelian PDP: stepper + ATC + wishlist + Beli Langsung.
+ * Bar pembelian PDP: stepper + ATC + wishlist + Beli Langsung + opsi foto WA.
  * Stok-0 → semua disabled dengan label "Stok Habis".
  */
 export function PurchaseBar({
@@ -17,6 +17,8 @@ export function PurchaseBar({
   onBuyNow,
   wishlisted,
   onWishlist,
+  requestPhoto = true,
+  onRequestPhotoChange,
 }: {
   qty: number;
   max: number;
@@ -26,6 +28,8 @@ export function PurchaseBar({
   onBuyNow: () => void;
   wishlisted: boolean;
   onWishlist: () => void;
+  requestPhoto?: boolean;
+  onRequestPhotoChange?: (checked: boolean) => void;
 }) {
   const soldOut = max <= 0;
 
@@ -37,7 +41,7 @@ export function PurchaseBar({
           type="button"
           onClick={onAdd}
           disabled={soldOut}
-          className="h-11 flex-1 rounded-lg bg-[#111111] text-xs font-extrabold tracking-wide text-white uppercase hover:bg-[#2A2A2A] disabled:bg-[#F3F4F6] disabled:text-[#9CA3AF]"
+          className="h-11 flex-1 rounded-lg bg-[#BE185D] text-xs font-extrabold tracking-wide text-white uppercase hover:bg-[#9D174D] disabled:bg-[#EAE2DE] disabled:text-[#57534E]"
         >
           <ShoppingBag size={16} aria-hidden="true" />
           {soldOut
@@ -52,14 +56,14 @@ export function PurchaseBar({
           aria-label={wishlisted ? "Hapus dari wishlist" : "Simpan ke wishlist"}
           aria-pressed={wishlisted}
           className={cn(
-            "h-11 w-11 shrink-0 rounded-lg",
-            wishlisted && "border-rose-300 bg-rose-50",
+            "h-11 w-11 shrink-0 rounded-lg border-[#EAE2DE]",
+            wishlisted && "border-[#FBCFE8] bg-[#FDF2F8]",
           )}
         >
           <Heart
             size={18}
             aria-hidden="true"
-            className={wishlisted ? "fill-rose-600 text-rose-600" : ""}
+            className={wishlisted ? "fill-[#BE185D] text-[#BE185D]" : ""}
           />
         </Button>
       </div>
@@ -68,13 +72,20 @@ export function PurchaseBar({
         variant="outline"
         onClick={onBuyNow}
         disabled={soldOut}
-        className="mt-2 h-11 w-full rounded-lg border-[#111111] text-xs font-bold text-[#1A1A1A] hover:bg-[#F8F9FA] disabled:border-[#E5E7EB] disabled:text-[#9CA3AF]"
+        className="mt-2 h-11 w-full rounded-lg border-[#BE185D] bg-white text-xs font-bold text-[#BE185D] hover:bg-[#FDF2F8] hover:text-[#9D174D] disabled:border-[#EAE2DE] disabled:text-[#57534E]"
       >
         {soldOut ? "Stok Habis" : "Beli Langsung Sekarang"}
       </Button>
-      <label className="mt-2 flex cursor-pointer items-start gap-2 text-[11px] text-[#6B7280]">
-        <input type="checkbox" className="mt-0.5 accent-[#111111]" />
-        Minta foto buket jadi ke WhatsApp sebelum dikirim ke kurir
+      <label className="mt-2.5 flex cursor-pointer items-start gap-2 text-xs text-[#57534E]">
+        <input
+          type="checkbox"
+          checked={requestPhoto}
+          onChange={(event) => onRequestPhotoChange?.(event.target.checked)}
+          className="mt-0.5 size-4 accent-[#BE185D]"
+        />
+        <span>
+          Minta foto hasil buket ke WhatsApp sebelum dikirim oleh kurir
+        </span>
       </label>
     </div>
   );

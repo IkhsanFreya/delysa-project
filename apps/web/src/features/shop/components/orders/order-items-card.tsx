@@ -5,8 +5,8 @@ export function OrderItemsCard({ order }: { order: OrderRecord }) {
   const { totals } = order;
 
   return (
-    <section className="rounded-2xl border border-[#E5E7EB] bg-white p-4 shadow-sm sm:p-5">
-      <p className="text-[11px] font-semibold tracking-[0.12em] text-[#FF6B35] uppercase">
+    <section className="rounded-2xl border border-[#EAE2DE] bg-white p-4 shadow-sm sm:p-5">
+      <p className="text-[11px] font-semibold tracking-[0.12em] text-[#BE185D] uppercase">
         Detail Pesanan
       </p>
       <h2 className="mt-1 text-base font-extrabold text-[#1A1A1A]">
@@ -72,9 +72,9 @@ export function OrderItemsCard({ order }: { order: OrderRecord }) {
             {formatIDR(totals.couponDiscount)}
           </dd>
         </div>
-        <div className="flex justify-between gap-3 border-t border-[#E5E7EB] pt-2 text-sm">
-          <dt className="font-semibold text-[#1A1A1A]">Grand total</dt>
-          <dd className="font-extrabold text-[#FF6B35]">
+        <div className="flex justify-between gap-3 border-t border-[#EAE2DE] pt-2 text-sm">
+          <dt className="font-semibold text-[#1C1917]">Grand total</dt>
+          <dd className="font-extrabold text-[#BE185D] tabular-nums">
             {formatIDR(totals.grandTotal)}
           </dd>
         </div>

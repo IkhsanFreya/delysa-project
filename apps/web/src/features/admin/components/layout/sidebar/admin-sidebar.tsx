@@ -1,5 +1,5 @@
 import type { AuthUser } from "@delysa/shared";
-import { Flower2Icon, XIcon } from "lucide-react";
+import { XIcon } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { Button } from "~/components/ui/button";
 import {
@@ -23,10 +23,13 @@ export function AdminSidebar({ user }: { user: AuthUser }) {
           to="/admin"
           className="flex min-w-0 flex-1 items-center gap-2.5 rounded-xl px-1 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sidebar-ring"
         >
-          {/* Mengubah ukuran kontainer ikon menjadi size-8 dan menambahkan class untuk handle saat collapsed */}
-          <span className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-            <Flower2Icon className="size-4" aria-hidden="true" />
-          </span>
+          <img
+            src="/logo-delysa.jpg"
+            alt=""
+            width={32}
+            height={32}
+            className="aspect-square size-8 shrink-0 rounded-full object-cover ring-1 ring-sidebar-border"
+          />
 
           <span className="grid min-w-0 group-data-[collapsible=icon]:hidden">
             <span className="truncate text-sm font-extrabold tracking-tight">

@@ -1,15 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ShopPlaceholderPage } from "~/features/shop/view/shop-placeholder-page";
+import CollectionPage from "~/features/shop/view/collection-page";
 
 export const Route = createFileRoute("/_shop/new-arrivals")({
   component: NewArrivalsRouteComponent,
 });
 
 function NewArrivalsRouteComponent() {
-  return (
-    <ShopPlaceholderPage
-      title="New Arrivals"
-      description="Koleksi terbaru atelier segera hadir di halaman ini."
-    />
-  );
+  return <CollectionPage mode="new-arrivals" />;
 }

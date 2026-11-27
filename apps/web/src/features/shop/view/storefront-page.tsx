@@ -93,7 +93,7 @@ export default function StorefrontPage({
     <main className="pb-4">
       <HeroSection />
       <CategoryGrid />
-      {/*<TrustStrip />*/}
+      <TrustStrip />
       <FlashSaleSection
         products={empty ? [] : (flash.data ?? [])}
         isPending={pending || flash.isPending}
@@ -101,28 +101,33 @@ export default function StorefrontPage({
       <ProductRail
         eyebrow="Paling Laris"
         title="Produk Terlaris Minggu Ini"
+        linkText="Lihat Semua Terlaris"
+        link={{ to: "/best-sellers" }}
         products={empty ? [] : (best.data ?? [])}
         isPending={pending || best.isPending}
         tabs={["Semua", "Wisuda", "Mawar", "Anggrek"]}
       />
       <ProductRail
         eyebrow="Baru Datang"
-        title="Koleksi Terbaru Atelier"
-        linkText="Lihat Semua Produk Terbaru"
+        title="Koleksi Terbaru Delysa"
+        linkText="Lihat Semua Terbaru"
+        link={{ to: "/new-arrivals" }}
         products={empty ? [] : (fresh.data ?? [])}
         isPending={pending || fresh.isPending}
       />
       <ProductRail
         eyebrow="Wisuda"
         title="Koleksi Wisuda Favorit"
-        linkText="Lihat Semua (42 Produk)"
+        linkText="Lihat Semua Wisuda"
+        link={{ to: "/katalog", search: { category: "Wisuda" } }}
         products={empty ? [] : (wisuda.data ?? [])}
         isPending={pending || wisuda.isPending}
       />
       <ProductRail
-        eyebrow="Kado"
-        title="Buket Bunga Kado & Mawar Romantis"
-        linkText="Lihat Semua (36 Produk)"
+        eyebrow="Kado & Buket Request"
+        title="Buket Jajanan, Buket Uang & Kado Spesial"
+        linkText="Lihat Semua Kado"
+        link={{ to: "/katalog", search: { category: "Kado" } }}
         products={empty ? [] : (kado.data ?? [])}
         isPending={pending || kado.isPending}
       />
@@ -130,6 +135,8 @@ export default function StorefrontPage({
       <ProductRail
         eyebrow="Untuk Anda"
         title="Rekomendasi Untuk Anda"
+        linkText="Buka Katalog Lengkap"
+        link={{ to: "/katalog" }}
         products={empty ? [] : reco.items}
         isPending={pending || reco.isPending}
         loadMoreText="Muat Lebih Banyak Produk"

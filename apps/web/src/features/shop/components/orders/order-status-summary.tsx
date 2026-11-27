@@ -9,10 +9,10 @@ export function OrderStatusSummary({ order }: { order: OrderRecord }) {
   const meta = getOrderStatusMeta(order.status);
 
   return (
-    <section className="rounded-2xl border border-[#E5E7EB] bg-white p-4 shadow-sm sm:p-5">
+    <section className="rounded-2xl border border-[#EAE2DE] bg-white p-4 shadow-sm sm:p-5">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="min-w-0">
-          <p className="text-[11px] font-semibold tracking-[0.12em] text-[#FF6B35] uppercase">
+          <p className="text-[11px] font-semibold tracking-[0.12em] text-[#BE185D] uppercase">
             Status Pesanan
           </p>
           <h1 className="mt-1 text-xl font-extrabold tracking-tight text-[#1A1A1A] sm:text-2xl">

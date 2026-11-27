@@ -24,8 +24,8 @@ export function OrderDeliveryCard({
     : maskOrderAddress(order.shippingAddress);
 
   return (
-    <section className="rounded-2xl border border-[#E5E7EB] bg-white p-4 shadow-sm sm:p-5 mb-4">
-      <p className="text-[11px] font-semibold tracking-[0.12em] text-[#FF6B35] uppercase">
+    <section className="mb-4 rounded-2xl border border-[#EAE2DE] bg-white p-4 shadow-sm sm:p-5">
+      <p className="text-[11px] font-semibold tracking-[0.12em] text-[#BE185D] uppercase">
         Pengiriman
       </p>
       <h2 className="mt-1 text-base font-extrabold text-[#1A1A1A]">
@@ -101,7 +101,7 @@ export function OrderDeliveryCard({
       </dl>
 
       {!isAuthenticated ? (
-        <p className="mt-3 rounded-xl bg-[#FFF3ED] px-3 py-2 text-[11px] leading-relaxed text-[#9A3412]">
+        <p className="mt-3 rounded-xl bg-[#FDF2F8] px-3 py-2 text-[11px] leading-relaxed text-[#9D174D]">
           Masuk ke akun untuk melihat data penerima secara lengkap.
         </p>
       ) : null}

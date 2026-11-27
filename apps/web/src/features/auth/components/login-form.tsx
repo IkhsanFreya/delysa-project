@@ -70,10 +70,10 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
             <Field data-invalid={fieldState.invalid} className="gap-0.5">
               <FieldLabel
                 htmlFor="login-email"
-                className="text-[13px] font-medium text-[#1A1A1A]"
+                className="text-[13px] font-medium text-[#1C1917]"
               >
                 Email{" "}
-                <span aria-hidden="true" className="text-[#FF6B35]">
+                <span aria-hidden="true" className="text-[#BE185D]">
                   *
                 </span>
               </FieldLabel>
@@ -84,7 +84,7 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
                 autoComplete="email"
                 placeholder="contoh: nama@domain.com"
                 aria-invalid={fieldState.invalid}
-                className="h-10 rounded-xl border-[#E5E7EB] bg-[#FFFFFF] px-3.5 text-sm placeholder:text-[#9CA3AF] focus-visible:border-[#111111] focus-visible:ring-[#111111]/15 aria-invalid:border-[#DC2626] aria-invalid:ring-1 aria-invalid:ring-[#DC2626]/15"
+                className="h-10 rounded-lg border-[#D6CBC6] bg-[#FFFFFF] px-3.5 text-sm placeholder:text-[#78716C] focus-visible:border-[#BE185D] focus-visible:ring-[#BE185D]/20 aria-invalid:border-[#DC2626] aria-invalid:ring-1 aria-invalid:ring-[#DC2626]/15"
               />
               <div className="min-h-[14px]">
                 {fieldState.invalid && (
@@ -105,10 +105,10 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
             <Field data-invalid={fieldState.invalid} className="gap-0.5">
               <FieldLabel
                 htmlFor="login-password"
-                className="text-[13px] font-medium text-[#1A1A1A]"
+                className="text-[13px] font-medium text-[#1C1917]"
               >
                 Kata Sandi{" "}
-                <span aria-hidden="true" className="text-[#FF6B35]">
+                <span aria-hidden="true" className="text-[#BE185D]">
                   *
                 </span>
               </FieldLabel>
@@ -120,7 +120,7 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
                   autoComplete="current-password"
                   placeholder="Masukkan kata sandi akun"
                   aria-invalid={fieldState.invalid}
-                  className="h-10 rounded-xl border-[#E5E7EB] bg-[#FFFFFF] pr-10 pl-3.5 text-sm placeholder:text-[#9CA3AF] focus-visible:border-[#111111] focus-visible:ring-[#111111]/15 aria-invalid:border-[#DC2626] aria-invalid:ring-1 aria-invalid:ring-[#DC2626]/15"
+                  className="h-10 rounded-lg border-[#D6CBC6] bg-[#FFFFFF] pr-10 pl-3.5 text-sm placeholder:text-[#78716C] focus-visible:border-[#BE185D] focus-visible:ring-[#BE185D]/20 aria-invalid:border-[#DC2626] aria-invalid:ring-1 aria-invalid:ring-[#DC2626]/15"
                 />
                 <button
                   type="button"
@@ -128,7 +128,7 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
                   aria-label={
                     showPassword ? "Sembunyikan password" : "Tampilkan password"
                   }
-                  className="absolute top-1/2 right-1.5 -translate-y-1/2 rounded-lg p-1.5 text-[#6B7280] hover:bg-[#F8F9FA] hover:text-[#111111] focus-visible:outline-2 focus-visible:outline-[#111111]"
+                  className="absolute top-1/2 right-1.5 -translate-y-1/2 rounded-lg p-1.5 text-[#57534E] hover:bg-[#FDF2F8] hover:text-[#9D174D] focus-visible:outline-2 focus-visible:outline-[#BE185D]"
                 >
                   {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>
@@ -161,9 +161,9 @@ export function LoginForm({ onSuccess }: LoginFormProps) {
         type="submit"
         size="lg"
         disabled={isSubmitting}
-        className="h-11 cursor-pointer w-full rounded-xl bg-[#111111] text-sm font-semibold text-[#FFFFFF] hover:bg-[#2A2A2A] active:translate-y-px"
+        className="h-11 w-full rounded-lg bg-[#BE185D] text-sm font-semibold text-white hover:bg-[#9D174D] active:translate-y-px"
       >
-        {isSubmitting ? "Merangkai..." : "Masuk ke Akun"}
+        {isSubmitting ? "Memproses..." : "Masuk ke Akun"}
         {!isSubmitting ? <ArrowRight size={16} aria-hidden="true" /> : null}
       </Button>
     </form>

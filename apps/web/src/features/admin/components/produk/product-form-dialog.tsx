@@ -324,7 +324,7 @@ export function ProductFormDialog({
         </Button>
         <Button
           type="submit"
-          className="flex-1 rounded-lg bg-[#FF6B35] text-white hover:bg-[#C2410C]"
+          className="flex-1 rounded-lg bg-[#BE185D] text-white hover:bg-[#9D174D]"
         >
           {isEdit ? "Simpan Perubahan" : "Tambah Produk"}
         </Button>

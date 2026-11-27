@@ -7,7 +7,7 @@ import {
 } from "~/features/shop/lib/order-status";
 
 const TONE_CLASSES: Record<OrderStatusTone, string> = {
-  warning: "bg-[#FFF3ED] text-[#C2410C] ring-[#FF6B35]/20",
+  warning: "bg-amber-50 text-amber-900 ring-amber-200",
   info: "bg-sky-50 text-sky-700 ring-sky-200",
   success: "bg-emerald-50 text-emerald-700 ring-emerald-200",
   progress: "bg-indigo-50 text-indigo-700 ring-indigo-200",

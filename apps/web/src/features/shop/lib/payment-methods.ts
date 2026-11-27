@@ -1,7 +1,7 @@
 import { isPaymentMethod, type PaymentMethod } from "~/features/shop/types";
 
-export const WHATSAPP_NUMBER = "6282116789558";
-export const WHATSAPP_DISPLAY = "082116789558";
+export const WHATSAPP_NUMBER = "6282266229917";
+export const WHATSAPP_DISPLAY = "0822-6622-9917";
 export const BCA_ACCOUNT_NUMBER = "054-082-9912";
 
 type PaymentMethodDetails = {

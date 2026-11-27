@@ -10,14 +10,14 @@ export function OrderHistoryEmpty({
   onLookup: (code: string) => void;
 }) {
   return (
-    <section className="rounded-2xl border border-dashed border-[#E5E7EB] bg-white p-6 text-center sm:p-8">
-      <span className="mx-auto flex size-12 items-center justify-center rounded-full bg-[#FFF3ED] text-[#FF6B35] ring-1 ring-[#FFE1D2]">
+    <section className="rounded-2xl border border-dashed border-[#EAE2DE] bg-white p-6 text-center sm:p-8">
+      <span className="mx-auto flex size-12 items-center justify-center rounded-full bg-[#FDF2F8] text-[#BE185D] ring-1 ring-[#FBCFE8]">
         <PackageOpen size={23} aria-hidden="true" />
       </span>
-      <h2 className="mt-3 text-lg font-extrabold tracking-tight text-[#1A1A1A]">
+      <h2 className="mt-3 text-lg font-extrabold tracking-tight text-[#1C1917]">
         Belum ada pesanan
       </h2>
-      <p className="mx-auto mt-1 max-w-sm text-xs leading-relaxed text-[#6B7280]">
+      <p className="mx-auto mt-1 max-w-sm text-xs leading-relaxed text-[#57534E]">
         Mulai dari satu rangkaian kecil, lalu pantau perjalanannya di sini.
         Sudah punya kode pesanan? Lacak langsung tanpa login.
       </p>
@@ -25,7 +25,7 @@ export function OrderHistoryEmpty({
       <Button
         type="button"
         onClick={onBrowse}
-        className="mt-4 h-10 rounded-lg bg-[#FF6B35] px-4 text-sm font-semibold text-[#21140D] hover:bg-[#F25C26]"
+        className="mt-4 h-10 rounded-lg bg-[#BE185D] px-4 text-sm font-semibold text-white hover:bg-[#9D174D]"
       >
         Jelajahi katalog
       </Button>

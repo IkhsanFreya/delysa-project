@@ -23,10 +23,11 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "~/components/ui/breadcrumb";
-import { Button } from "~/components/ui/button";
+import { Button, buttonVariants } from "~/components/ui/button";
 import { Textarea } from "~/components/ui/textarea";
 import { formatIDR } from "~/features/shop/lib/format";
 import { QuantityStepper } from "~/features/shop/components/product/quantity-stepper";
+import { useSession } from "~/features/auth/hooks/use-session";
 import { useMiniCart } from "~/features/shop/hooks/use-mini-cart";
 import { toast } from "~/components/ui/toast";
 import { CartLineItem } from "~/features/shop/components/cart/cart-line-item";
@@ -82,6 +83,7 @@ export default function CartPage({
     add: addLine,
   } = useMiniCart();
 
+  const { user } = useSession();
   const navigate = useNavigate({ from: "/keranjang" });
   const [selectedKeys, setSelectedKeys] = useState<string[]>([]);
 
@@ -190,12 +192,12 @@ export default function CartPage({
         <Breadcrumb className="pt-4">
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbLink render={<Link to="/" />}>Home</BreadcrumbLink>
+              <BreadcrumbLink render={<Link to="/" />}>Beranda</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
               <BreadcrumbLink render={<Link to="/katalog" />}>
-                Shop
+                Katalog
               </BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
@@ -208,20 +210,26 @@ export default function CartPage({
         <div className="mt-8 flex flex-col items-center gap-4 text-center">
           <ShoppingBag
             size={64}
-            className="text-[#E5E7EB]"
+            className="text-[#EAE2DE]"
             aria-hidden="true"
           />
           <div>
-            <h1 className="text-xl font-extrabold text-[#1A1A1A]">
+            <h1 className="text-xl font-extrabold text-[#1C1917]">
               Keranjang kosong
             </h1>
-            <p className="mt-1 text-sm text-[#6B7280]">
+            <p className="mt-1 text-sm text-[#57534E]">
               Belum ada rangkaian di keranjang. Yuk temukan yang cocok!
             </p>
           </div>
-          <Button className="mt-4 rounded-full bg-[#111111] text-white hover:bg-[#2A2A2A]">
-            <Link to="/katalog">Jelajahi Katalog</Link>
-          </Button>
+          <Link
+            to="/katalog"
+            className={buttonVariants({
+              className:
+                "mt-2 rounded-full bg-[#BE185D] px-6 font-semibold text-white hover:bg-[#9D174D]",
+            })}
+          >
+            Jelajahi Katalog
+          </Link>
         </div>
       </main>
     );
@@ -279,12 +287,12 @@ export default function CartPage({
       <Breadcrumb className="pt-4">
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink render={<Link to="/" />}>Home</BreadcrumbLink>
+            <BreadcrumbLink render={<Link to="/" />}>Beranda</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
             <BreadcrumbLink render={<Link to="/katalog" />}>
-              Shop
+              Katalog
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
@@ -296,18 +304,18 @@ export default function CartPage({
 
       <div className="mt-2 flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h1 className="text-xl font-extrabold tracking-tight text-[#1A1A1A] sm:text-2xl">
+          <h1 className="text-xl font-extrabold tracking-tight text-[#1C1917] sm:text-2xl">
             Keranjang Belanja
           </h1>
-          <p className="mt-0.5 text-xs text-[#6B7280] sm:text-[13px]">
-            Atelier Flora Tasikmalaya — Rangkaian segar dirangkai khusus hari
+          <p className="mt-0.5 text-xs text-[#57534E] sm:text-[13px]">
+            Delysa Florist Tasikmalaya — Rangkaian segar dirangkai khusus hari
             ini.
           </p>
         </div>
         <DeliverySlotNote />
       </div>
 
-      <GuestBanner />
+      {!user ? <GuestBanner /> : null}
 
       <div className="mt-3 grid gap-4 lg:grid-cols-[minmax(0,1fr)_380px]">
         <div className="min-w-0 w-full space-y-4">
@@ -381,16 +389,16 @@ export default function CartPage({
           {TRUST_ITEMS.map((item) => (
             <li
               key={item.title}
-              className="flex items-start gap-2.5 rounded-xl border border-[#E5E7EB] bg-white p-3"
+              className="flex items-start gap-2.5 rounded-xl border border-[#EAE2DE] bg-white p-3"
             >
-              <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-[#FFF3ED] text-[#FF6B35]">
+              <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-[#FDF2F8] text-[#BE185D] ring-1 ring-[#FBCFE8]">
                 <item.icon size={18} aria-hidden="true" />
               </span>
               <span>
-                <span className="block text-xs font-bold text-[#1A1A1A]">
+                <span className="block text-xs font-bold text-[#1C1917]">
                   {item.title}
                 </span>
-                <span className="block text-[11px] text-[#6B7280]">
+                <span className="block text-[11px] text-[#57534E]">
                   {item.subtitle}
                 </span>
               </span>

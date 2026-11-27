@@ -81,7 +81,7 @@ export function CheckoutSuccess({
         data-testid="checkout-success-card"
         className="overflow-hidden rounded-2xl border border-[#E5E7EB] bg-white text-[#1A1A1A] shadow-[0_16px_48px_-32px_rgba(17,24,39,0.28)]"
       >
-        <div className="h-1 bg-[#FF6B35]" />
+        <div className="h-1 bg-[#BE185D]" />
         <div className="p-4 sm:p-6">
           <header className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div className="flex items-start gap-3">
@@ -155,7 +155,7 @@ export function CheckoutSuccess({
               className="rounded-xl border border-[#E5E7EB] bg-white p-3.5 sm:p-4"
             >
               <div className="flex items-start gap-2.5">
-                <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#FFF3ED] text-[#FF6B35] ring-1 ring-[#FFE1D2]">
+                <span className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#FDF2F8] text-[#BE185D] ring-1 ring-[#FBCFE8]">
                   {bank ? (
                     <Landmark size={17} aria-hidden="true" />
                   ) : (
@@ -229,7 +229,7 @@ export function CheckoutSuccess({
                       key={step}
                       className="flex gap-2 text-[11px] leading-relaxed text-[#6B7280] sm:text-xs"
                     >
-                      <span className="flex size-4.5 shrink-0 items-center justify-center rounded-full bg-[#FFF3ED] text-[9px] font-bold text-[#C2410C]">
+                      <span className="flex size-4.5 shrink-0 items-center justify-center rounded-full bg-[#FDF2F8] text-[9px] font-bold text-[#9D174D]">
                         {index + 1}
                       </span>
                       <span>{step}</span>

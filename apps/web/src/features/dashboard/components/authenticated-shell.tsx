@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import {
   ArrowLeft,
-  Flower2,
   LayoutDashboard,
   LogOut,
   ShieldCheck,
@@ -30,18 +29,24 @@ export function AuthenticatedShell({
   } = useLogoutFlow();
 
   return (
-    <div className="min-h-dvh bg-[#F8F9FA] text-[#1A1A1A]">
-      <header className="border-b border-[#E5E7EB] bg-white">
+    <div className="min-h-dvh bg-[#FAF7F5] text-[#1C1917]">
+      <header className="border-b border-[#EAE2DE] bg-white">
         <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-3 sm:px-6 lg:flex-row lg:items-center lg:justify-between">
           <div className="flex items-center justify-between gap-3">
             <Link
               to={home}
-              className="inline-flex items-center gap-2 font-extrabold tracking-tight"
+              className="inline-flex items-center gap-2.5 font-extrabold tracking-tight"
             >
-              <span className="flex size-9 items-center justify-center rounded-full bg-[#FFF3ED] text-[#FF6B35]">
-                <Flower2 size={18} aria-hidden="true" />
+              <img
+                src="/logo-delysa.jpg"
+                alt=""
+                width={36}
+                height={36}
+                className="size-9 rounded-full object-cover ring-1 ring-[#EAE2DE]"
+              />
+              <span>
+                DELYSA <span className="text-[#BE185D]">FLORIST</span>
               </span>
-              DELYSA FLORIST
             </Link>
             <span className="inline-flex items-center gap-1.5 rounded-full border border-[#E5E7EB] bg-[#F8F9FA] px-3 py-1 text-[11px] font-semibold text-[#4B5563]">
               {isCustomer ? (
@@ -120,8 +125,8 @@ export function AuthenticatedShell({
             <Link
               to={home}
               activeOptions={{ exact: true }}
-              activeProps={{ className: "bg-[#FFF3ED] text-[#C2410C]" }}
-              className="flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold text-[#4B5563] transition-colors hover:bg-[#F8F9FA] hover:text-[#1A1A1A]"
+              activeProps={{ className: "bg-[#FDF2F8] text-[#9D174D]" }}
+              className="flex items-center gap-2 rounded-lg px-3 py-2 text-xs font-semibold text-[#57534E] transition-colors hover:bg-[#FAF7F5] hover:text-[#1C1917]"
             >
               <LayoutDashboard size={14} aria-hidden="true" />
               Ringkasan

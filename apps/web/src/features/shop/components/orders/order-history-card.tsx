@@ -94,8 +94,8 @@ export function OrderHistoryCard({
 
         <div className="mt-4 flex flex-wrap items-end justify-between gap-3 border-t border-[#E5E7EB] pt-3">
           <div>
-            <p className="text-[11px] text-[#6B7280]">Total pesanan</p>
-            <p className="text-base font-extrabold text-[#FF6B35]">
+            <p className="text-[11px] text-[#57534E]">Total pesanan</p>
+            <p className="text-base font-extrabold text-[#BE185D] tabular-nums">
               {formatIDR(order.totals.grandTotal)}
             </p>
           </div>
@@ -110,7 +110,7 @@ export function OrderHistoryCard({
                   variant: "outline",
                   size: "sm",
                   className:
-                    "rounded-lg border-[#E5E7EB] bg-white text-xs font-semibold text-[#1A1A1A] hover:bg-[#F7F7F8]",
+                    "rounded-lg border-[#EAE2DE] bg-white text-xs font-semibold text-[#1C1917] hover:bg-[#FAF7F5]",
                 })}
               >
                 <MessageCircle size={13} aria-hidden="true" className="mr-1" />
@@ -124,7 +124,7 @@ export function OrderHistoryCard({
               onClick={() =>
                 primary.action === "reorder" ? onReorder(order) : onOpen(order)
               }
-              className="rounded-lg bg-[#FF6B35] text-xs font-semibold text-[#21140D] hover:bg-[#F25C26]"
+              className="rounded-lg bg-[#BE185D] text-xs font-semibold text-white hover:bg-[#9D174D]"
             >
               {primary.label}
             </Button>

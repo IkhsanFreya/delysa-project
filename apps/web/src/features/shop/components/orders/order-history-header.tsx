@@ -6,25 +6,25 @@ export function OrderHistoryHeader({ userName }: { userName?: string }) {
   return (
     <header className="flex flex-col gap-4 border-b border-[#E5E7EB] pb-5 sm:flex-row sm:items-end sm:justify-between">
       <div>
-        <p className="text-[11px] font-semibold tracking-[0.16em] text-[#FF6B35] uppercase">
+        <p className="text-[11px] font-semibold tracking-[0.14em] text-[#BE185D] uppercase">
           Akun Delysa
         </p>
-        <h1 className="mt-1 text-2xl font-extrabold tracking-tight text-[#1A1A1A] sm:text-3xl">
+        <h1 className="mt-1 text-2xl font-extrabold tracking-tight text-[#1C1917] sm:text-3xl">
           Pesanan Saya
         </h1>
-        <p className="mt-1 max-w-lg text-sm leading-relaxed text-[#6B7280]">
+        <p className="mt-1 max-w-lg text-sm leading-relaxed text-[#57534E]">
           Pantau status rangkaian, unduh bukti pembayaran, dan pesan kembali
           buket favoritmu.
         </p>
         {userName ? (
-          <p className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-[#FFF3ED] px-3 py-1 text-xs font-semibold text-[#C2410C] ring-1 ring-[#FFE1D2]">
+          <p className="mt-3 inline-flex items-center gap-1.5 rounded-full bg-[#FDF2F8] px-3 py-1 text-xs font-semibold text-[#9D174D] ring-1 ring-[#FBCFE8]">
             <Sparkles size={13} aria-hidden="true" />
             {`Halo, ${userName.split(" ")[0]}`}
           </p>
         ) : null}
       </div>
 
-      <div className="rounded-2xl border border-[#E5E7EB] bg-[#FFFBF7] p-4 sm:max-w-xs">
+      <div className="rounded-2xl border border-[#EAE2DE] bg-[#FDF2F8]/60 p-4 sm:max-w-xs">
         <p className="text-sm font-bold text-[#1A1A1A]">Butuh bantuan?</p>
         <p className="mt-1 text-xs leading-relaxed text-[#6B7280]">
           Tim kami siap membantu cek pesanan, pembayaran, atau pengiriman.

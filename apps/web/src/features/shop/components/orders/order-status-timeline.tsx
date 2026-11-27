@@ -59,17 +59,17 @@ export function OrderStatusTimeline({
                 <span
                   aria-hidden="true"
                   className={`absolute top-6 bottom-0 left-[11px] w-px ${
-                    state === "done" ? "bg-[#FF6B35]" : "bg-[#E5E7EB]"
+                    state === "done" ? "bg-[#BE185D]" : "bg-[#EAE2DE]"
                   }`}
                 />
               ) : null}
               <span
                 className={`relative z-10 flex size-6 shrink-0 items-center justify-center rounded-full ring-1 ${
                   state === "done"
-                    ? "bg-[#FF6B35] text-white ring-[#FF6B35]"
+                    ? "bg-[#BE185D] text-white ring-[#BE185D]"
                     : state === "current"
-                      ? "bg-[#FFF3ED] text-[#C2410C] ring-[#FF6B35]"
-                      : "bg-white text-[#9CA3AF] ring-[#E5E7EB]"
+                      ? "bg-[#FDF2F8] text-[#9D174D] ring-[#BE185D]"
+                      : "bg-white text-[#78716C] ring-[#EAE2DE]"
                 }`}
               >
                 {state === "done" ? (

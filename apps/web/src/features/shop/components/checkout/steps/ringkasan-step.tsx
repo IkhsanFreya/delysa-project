@@ -92,10 +92,10 @@ export function RingkasanStep({
               {method.bank.accountName}
             </p>
           )}
-          <p className="mt-1 text-xs leading-relaxed text-[#6B7280]">
+          <p className="mt-1 text-xs leading-relaxed text-[#57534E]">
             {method
               ? method.bank
-                ? "Transfer sesuai total, lalu konfirmasi bukti pembayaran via WhatsApp."
+                ? "Transfer sesuai total, lalu unggah bukti transfer di halaman pesanan atau konfirmasi via WhatsApp."
                 : "QR code QRIS dikirim admin melalui WhatsApp setelah pesanan dibuat."
               : "Pilih metode pembayaran di langkah sebelumnya."}
           </p>
@@ -206,7 +206,7 @@ export function RingkasanStep({
           onClick={onSubmit}
           disabled={isSubmitting || !confirmed}
           aria-busy={isSubmitting}
-          className="rounded-full bg-[#111111] text-white hover:bg-[#2A2A2A] disabled:bg-[#D1D5DB] disabled:text-[#9CA3AF]"
+          className="rounded-full bg-[#BE185D] text-white hover:bg-[#9D174D] disabled:bg-[#EAE2DE] disabled:text-[#57534E]"
         >
           {isSubmitting ? (
             <>

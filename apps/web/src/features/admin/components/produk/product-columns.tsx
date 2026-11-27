@@ -30,7 +30,7 @@ const STOCK_BADGE: Record<
   { label: string; className: string }
 > = {
   aman: { label: "Tersedia", className: "bg-[#DCFCE7] text-[#166534]" },
-  menipis: { label: "Menipis", className: "bg-[#FFEDD5] text-[#C2410C]" },
+  menipis: { label: "Menipis", className: "bg-[#FEF3C7] text-[#92400E]" },
   habis: { label: "Habis", className: "bg-[#FEE2E2] text-[#B91C1C]" },
 };
 
@@ -49,7 +49,7 @@ export function ProductThumbnail({ product }: { product: AdminProduct }) {
   return (
     <span
       aria-hidden="true"
-      className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#FFF3ED] text-[11px] font-bold text-[#C2410C]"
+      className="flex size-9 shrink-0 items-center justify-center rounded-lg bg-[#FDF2F8] text-[11px] font-bold text-[#9D174D]"
     >
       {product.name.slice(0, 2).toUpperCase()}
     </span>
@@ -232,7 +232,7 @@ export function createProductColumns({
           size="sm"
           onClick={() => onEdit(row.original)}
           aria-label={`Edit produk ${row.original.name}`}
-          className="h-8 gap-1 rounded-lg px-2 text-xs font-semibold text-[#6B7280] hover:bg-[#FFF3ED] hover:text-[#C2410C]"
+          className="h-8 gap-1 rounded-lg px-2 text-xs font-semibold text-[#57534E] hover:bg-[#FDF2F8] hover:text-[#9D174D]"
         >
           <PencilIcon size={13} aria-hidden="true" />
           <span className="hidden sm:inline">Edit</span>

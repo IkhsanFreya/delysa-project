@@ -1,40 +1,46 @@
-import { UserPlus, LogIn, UserPlus as UserIcon } from "lucide-react";
-import { Button } from "~/components/ui/button";
+import { UserPlus, LogIn } from "lucide-react";
+import { buttonVariants } from "~/components/ui/button";
 import { Link } from "@tanstack/react-router";
 
 export function GuestBanner() {
   return (
-    <div className="rounded-xl border border-amber-200 bg-amber-50 p-3 mt-2">
+    <div className="mt-3 rounded-xl border border-[#FBCFE8] bg-[#FDF2F8] p-3.5">
       <div className="flex items-start gap-3">
         <UserPlus
           size={20}
-          className="shrink-0 text-amber-600"
+          className="mt-0.5 shrink-0 text-[#BE185D]"
           aria-hidden="true"
         />
         <div className="flex-1">
-          <p className="text-sm font-medium text-amber-800">
+          <p className="text-sm font-semibold text-[#831843]">
             Belanja Sebagai Tamu
           </p>
-          <p className="mt-0.5 text-sm text-amber-700">
-            Masuk untuk simpan keranjang hingga 30 hari & akses riwayat pesanan.
+          <p className="mt-0.5 text-xs leading-relaxed text-[#9D174D] sm:text-sm">
+            Masuk untuk simpan keranjang hingga 30 hari &amp; akses riwayat
+            pesanan Anda.
           </p>
-          <div className="mt-2 flex flex-wrap gap-2">
-            <Button
-              variant="default"
-              className="rounded-full bg-amber-600 text-white hover:bg-amber-700"
+          <div className="mt-2.5 flex flex-wrap gap-2">
+            <Link
+              to="/sign-in"
+              className={buttonVariants({
+                size: "sm",
+                className:
+                  "rounded-full bg-[#BE185D] text-white hover:bg-[#9D174D]",
+              })}
             >
-              <Link to="/sign-in" className="flex items-center gap-1">
-                <LogIn size={14} aria-hidden="true" /> Masuk
-              </Link>
-            </Button>
-            <Button
-              variant="ghost"
-              className="rounded-full text-amber-700 hover:bg-amber-100"
+              <LogIn size={14} aria-hidden="true" /> Masuk
+            </Link>
+            <Link
+              to="/sign-up"
+              className={buttonVariants({
+                variant: "outline",
+                size: "sm",
+                className:
+                  "rounded-full border-[#FBCFE8] bg-white text-[#9D174D] hover:bg-[#FCE7F3]",
+              })}
             >
-              <Link to="/sign-up" className="flex items-center gap-1">
-                <UserIcon size={14} aria-hidden="true" /> Buat Akun
-              </Link>
-            </Button>
+              <UserPlus size={14} aria-hidden="true" /> Buat Akun
+            </Link>
           </div>
         </div>
       </div>
