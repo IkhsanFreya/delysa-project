@@ -57,7 +57,8 @@ describe("AdminDashboardPage", () => {
     expect(
       screen.getByRole("heading", { name: /Peringatan Stok Produk/i }),
     ).toBeInTheDocument();
-    expect(screen.getByText("Pengguna & Laporan")).toBeInTheDocument();
-    expect(screen.getAllByText("Segera")).toHaveLength(1);
+    expect(
+      screen.getByRole("link", { name: /Laporan Penjualan/i }),
+    ).toHaveAttribute("href", "/admin/laporan");
   });
 });

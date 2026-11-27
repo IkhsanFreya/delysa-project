@@ -7,10 +7,10 @@ import {
   Clock,
   Flower2,
   Package,
+  PieChart,
   Plus,
   ShieldCheck,
   Truck,
-  Users,
 } from "lucide-react";
 import type { AuthUser } from "@delysa/shared";
 import { buttonVariants } from "~/components/ui/button";
@@ -384,23 +384,25 @@ export function AdminDashboardPage({ user }: { user: AuthUser }) {
           </p>
         </Link>
 
-        <div className="rounded-2xl border border-[#EAE2DE] bg-white p-4 shadow-sm">
-          <span className="flex size-9 items-center justify-center rounded-full bg-[#F5F0ED] text-[#57534E] ring-1 ring-[#EAE2DE]">
-            <Users size={17} aria-hidden="true" />
+        <Link
+          to="/admin/laporan"
+          className="group rounded-2xl border border-[#EAE2DE] bg-white p-4 shadow-sm transition-colors hover:border-[#F472B6] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#BE185D]"
+        >
+          <span className="flex size-9 items-center justify-center rounded-full bg-[#FDF2F8] text-[#BE185D] ring-1 ring-[#FBCFE8]">
+            <PieChart size={17} aria-hidden="true" />
           </span>
           <div className="mt-3 flex items-center justify-between gap-2">
-            <p className="text-sm font-bold text-[#1C1917]">
-              Pengguna &amp; Laporan
+            <p className="text-sm font-bold text-[#1C1917] group-hover:text-[#BE185D]">
+              Laporan Penjualan
             </p>
-            <span className="rounded-full bg-[#F5F0ED] px-2 py-0.5 text-[10px] font-semibold text-[#57534E]">
-              Segera
+            <span className="rounded-full bg-[#FDF2F8] px-2 py-0.5 text-[10px] font-semibold text-[#9D174D]">
+              Live DB
             </span>
           </div>
           <p className="mt-1 text-xs leading-relaxed text-[#57534E]">
-            Manajemen akun pelanggan serta rekap omzet periodik sedang
-            disiapkan.
+            Pantau omzet terverifikasi, kategori terlaris, dan export CSV.
           </p>
-        </div>
+        </Link>
       </section>
 
       <p className="rounded-xl border border-[#EAE2DE] bg-white px-4 py-3 text-xs leading-relaxed text-[#57534E]">
