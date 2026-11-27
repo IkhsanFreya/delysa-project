@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import { Headset, RotateCcw, ShieldCheck, Truck, Wallet } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -38,10 +38,12 @@ import {
  * slug-tak-ada ditangani `notFoundComponent` route (bukan di sini).
  */
 export default function ProductDetailPage({ slug }: { slug: string }) {
+  const navigate = useNavigate();
   const { data, isPending, isError, refetch } = useProductDetail(slug);
   const [sizeId, setSizeId] = useState<string | null>(null);
   const [wrapId, setWrapId] = useState<string | null>(null);
   const [note, setNote] = useState("");
+  const [requestPhoto, setRequestPhoto] = useState(true);
   const [qty, setQty] = useState(1);
   const [stickyVisible, setStickyVisible] = useState(false);
   const purchaseRef = useRef<HTMLDivElement>(null);
@@ -52,6 +54,7 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
     setWrapId(null);
     setQty(1);
     setNote("");
+    setRequestPhoto(true);
   }, [slug]);
 
   useEffect(() => {
@@ -119,9 +122,11 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
   const safeQty = clampQty(qty, data.stock);
   const soldOut = data.stock <= 0;
 
-  const handleAdd = () => {
-    if (soldOut || note.length > GIFT_NOTE_MAX) return;
-    cart.add({
+  const buildCartLine = () => {
+    const trimmed = note.trim();
+    const photoNote = requestPhoto ? "[Minta foto sebelum kirim via WA]" : "";
+    const combinedNote = [trimmed, photoNote].filter(Boolean).join(" · ");
+    return {
       slug: data.slug,
       name: data.name,
       image: data.gallery[0] ?? data.image,
@@ -131,12 +136,24 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
       wrapLabel: wrap?.label,
       price,
       qty: safeQty,
-      note: note.trim() ? note.trim() : undefined,
-      kind: "product",
+      note: combinedNote || undefined,
+      kind: "product" as const,
       originalPrice: data.originalPrice,
       bonuses: data.bonuses,
       maxQty: data.stock,
-    });
+    };
+  };
+
+  const handleAdd = () => {
+    if (soldOut || note.length > GIFT_NOTE_MAX) return;
+    cart.add(buildCartLine());
+  };
+
+  const handleBuyNow = () => {
+    if (soldOut || note.length > GIFT_NOTE_MAX) return;
+    cart.add(buildCartLine());
+    cart.setOpen(false);
+    void navigate({ to: "/checkout", search: { step: "review" } });
   };
 
   return (
@@ -147,12 +164,12 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink render={<Link to="/" />}>Home</BreadcrumbLink>
+            <BreadcrumbLink render={<Link to="/" />}>Beranda</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
             <BreadcrumbLink render={<Link to="/katalog" />}>
-              Shop
+              Katalog
             </BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
@@ -215,9 +232,11 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
               price={price}
               onQty={setQty}
               onAdd={handleAdd}
-              onBuyNow={handleAdd}
+              onBuyNow={handleBuyNow}
               wishlisted={cart.wishlist}
               onWishlist={() => cart.setWishlist((v: boolean) => !v)}
+              requestPhoto={requestPhoto}
+              onRequestPhotoChange={setRequestPhoto}
             />
           </div>
           <ul
@@ -271,12 +290,12 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
         <ProductTabs detail={data} />
       </div>
 
-      <div className="mt-8">
-        <p className="text-[11px] font-semibold tracking-[0.08em] text-[#6B7280] uppercase">
+      <section id="ulasan" className="mt-8 scroll-mt-28">
+        <p className="text-[11px] font-semibold tracking-[0.08em] text-[#BE185D] uppercase">
           Ulasan Pelanggan Terverifikasi
         </p>
-        <h2 className="text-xl font-extrabold tracking-tight text-[#1A1A1A]">
-          Kepuasan & Bukti Rangkaian Nyata
+        <h2 className="text-xl font-extrabold tracking-tight text-[#1C1917]">
+          Kepuasan &amp; Bukti Rangkaian Nyata
         </h2>
         <div className="mt-3">
           <ReviewSummary detail={data} />
@@ -284,29 +303,25 @@ export default function ProductDetailPage({ slug }: { slug: string }) {
         <div className="mt-4">
           <ReviewList reviews={data.reviews} />
         </div>
-      </div>
+      </section>
 
       <RelatedRail category={data.category} currentSlug={data.slug} />
 
-      <p className="mt-8 border-t border-[#E5E7EB] pt-3 text-[11px] text-[#6B7280]">
-        Terakhir dilihat: &bull; {data.name} (Sedang Dilihat)
-      </p>
-
       {stickyVisible && !soldOut ? (
-        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-[#E5E7EB] bg-white/95 px-4 py-2.5 backdrop-blur-sm lg:hidden">
+        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-[#EAE2DE] bg-white/95 px-4 py-2.5 backdrop-blur-xs lg:hidden">
           <div className="mx-auto flex max-w-7xl items-center gap-3">
             <div className="min-w-0 flex-1">
-              <p className="truncate text-xs font-bold text-[#1A1A1A]">
+              <p className="truncate text-xs font-bold text-[#1C1917]">
                 {data.name}
               </p>
-              <p className="text-xs font-extrabold tabular-nums">
+              <p className="text-xs font-extrabold text-[#BE185D] tabular-nums">
                 {formatIDR(price)}
               </p>
             </div>
             <Button
               type="button"
               onClick={handleAdd}
-              className="h-10 rounded-lg bg-[#111111] text-xs font-bold text-white"
+              className="h-10 rounded-full bg-[#BE185D] px-4 text-xs font-bold text-white hover:bg-[#9D174D]"
             >
               Tambah &bull; {formatIDR(price * safeQty)}
             </Button>

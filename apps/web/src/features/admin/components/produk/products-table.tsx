@@ -40,8 +40,8 @@ export function ProductsTable({
   return (
     <div className="min-w-0">
       {selectedCount > 0 && (
-        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#FFE1D3] bg-[#FFF7F2] px-4 py-2">
-          <p className="text-xs font-semibold text-[#C2410C]">
+        <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#FBCFE8] bg-[#FDF2F8] px-4 py-2">
+          <p className="text-xs font-semibold text-[#9D174D]">
             {selectedCount} produk dipilih
           </p>
           <Button
@@ -49,7 +49,7 @@ export function ProductsTable({
             variant="ghost"
             size="sm"
             onClick={() => table.resetRowSelection()}
-            className="h-7 rounded-lg px-2 text-xs font-semibold text-[#C2410C] hover:bg-[#FFE1D3]"
+            className="h-7 rounded-lg px-2 text-xs font-semibold text-[#9D174D] hover:bg-[#FCE7F3]"
           >
             Bersihkan pilihan
           </Button>
@@ -119,20 +119,20 @@ export function ProductsTable({
                         <button
                           type="button"
                           onClick={column.getToggleSortingHandler()}
-                          className="inline-flex items-center gap-1 rounded-sm text-left font-semibold uppercase outline-none hover:text-[#C2410C] focus-visible:ring-2 focus-visible:ring-[#FF6B35]/40"
+                          className="inline-flex items-center gap-1 rounded-sm text-left font-semibold uppercase outline-none hover:text-[#9D174D] focus-visible:ring-2 focus-visible:ring-[#BE185D]/40"
                         >
                           <table.FlexRender header={header} />
                           {sorted === "asc" ? (
                             <ArrowUpIcon
                               size={12}
                               aria-hidden="true"
-                              className="text-[#C2410C]"
+                              className="text-[#BE185D]"
                             />
                           ) : sorted === "desc" ? (
                             <ArrowDownIcon
                               size={12}
                               aria-hidden="true"
-                              className="text-[#C2410C]"
+                              className="text-[#BE185D]"
                             />
                           ) : (
                             <ArrowUpDownIcon
@@ -161,7 +161,7 @@ export function ProductsTable({
                   data-selected={selected || undefined}
                   className={cn(
                     "border-b border-[#F1F2F4] transition-colors",
-                    selected ? "bg-[#FFF7F2]" : "hover:bg-[#FFFBF8]",
+                    selected ? "bg-[#FDF2F8]" : "hover:bg-[#FAF7F5]",
                   )}
                 >
                   {row

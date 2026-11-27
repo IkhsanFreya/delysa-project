@@ -22,9 +22,9 @@ type StatCard = {
 };
 
 const TONE_CLASS: Record<StatCard["tone"], string> = {
-  orange: "bg-[#FFF3ED] text-[#FF6B35]",
-  green: "bg-[#DCFCE7] text-[#16A34A]",
-  amber: "bg-[#FFEDD5] text-[#C2410C]",
+  orange: "bg-[#FDF2F8] text-[#BE185D]",
+  green: "bg-[#DCFCE7] text-[#166534]",
+  amber: "bg-[#FEF3C7] text-[#92400E]",
   red: "bg-[#FEE2E2] text-[#DC2626]",
 };
 
@@ -63,7 +63,7 @@ export function ProductsStatsCards({ products }: { products: AdminProduct[] }) {
       tone: summary.lowStock + summary.outOfStock > 0 ? "red" : "green",
       valueClassName:
         summary.lowStock + summary.outOfStock > 0
-          ? "text-[#C2410C]"
+          ? "text-[#92400E]"
           : "text-[#166534]",
     },
   ];

@@ -35,15 +35,15 @@ export function CustomerHomePage({ user }: { user: AuthUser }) {
 
   return (
     <div className="space-y-4">
-      <section className="rounded-2xl border border-[#E5E7EB] bg-white p-5 shadow-sm sm:p-6">
-        <p className="inline-flex items-center gap-1.5 rounded-full bg-[#FFF3ED] px-3 py-1 text-[11px] font-semibold text-[#C2410C]">
+      <section className="rounded-2xl border border-[#EAE2DE] bg-white p-5 shadow-sm sm:p-6">
+        <p className="inline-flex items-center gap-1.5 rounded-full bg-[#FDF2F8] px-3 py-1 text-[11px] font-semibold text-[#9D174D] ring-1 ring-[#FBCFE8]">
           <Sparkles size={13} aria-hidden="true" />
           Akun pelanggan
         </p>
         <h1 className="mt-3 text-2xl font-extrabold tracking-tight sm:text-3xl">
           Halo, {firstName}
         </h1>
-        <p className="mt-1 max-w-xl text-sm leading-relaxed text-[#6B7280]">
+        <p className="mt-1 max-w-xl text-sm leading-relaxed text-[#57534E]">
           Kelola pesanan dan lanjutkan belanja buket favorit Anda dari satu
           tempat.
         </p>
@@ -51,7 +51,7 @@ export function CustomerHomePage({ user }: { user: AuthUser }) {
           to="/katalog"
           className={buttonVariants({
             className:
-              "mt-4 h-10 rounded-lg bg-[#111111] px-4 text-sm font-semibold text-white hover:bg-[#2A2A2A]",
+              "mt-4 h-10 rounded-full bg-[#BE185D] px-5 text-sm font-semibold text-white hover:bg-[#9D174D]",
           })}
         >
           Mulai belanja
@@ -66,13 +66,15 @@ export function CustomerHomePage({ user }: { user: AuthUser }) {
             <Link
               key={action.title}
               to={action.to}
-              className="group rounded-2xl border border-[#E5E7EB] bg-white p-4 shadow-sm transition-colors hover:border-[#FDBA74]"
+              className="group rounded-2xl border border-[#EAE2DE] bg-white p-4 shadow-sm transition-colors hover:border-[#FBCFE8]"
             >
-              <span className="flex size-9 items-center justify-center rounded-full bg-[#FFF3ED] text-[#FF6B35]">
+              <span className="flex size-9 items-center justify-center rounded-full bg-[#FDF2F8] text-[#BE185D] ring-1 ring-[#FBCFE8]">
                 <Icon size={17} aria-hidden="true" />
               </span>
-              <p className="mt-3 text-sm font-bold">{action.title}</p>
-              <p className="mt-1 text-xs leading-relaxed text-[#6B7280]">
+              <p className="mt-3 text-sm font-bold text-[#1C1917] group-hover:text-[#BE185D]">
+                {action.title}
+              </p>
+              <p className="mt-1 text-xs leading-relaxed text-[#57534E]">
                 {action.description}
               </p>
             </Link>

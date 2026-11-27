@@ -35,16 +35,16 @@ export function TrustStrip({
           return (
             <li
               key={item.title}
-              className="flex items-center gap-2.5 rounded-xl border border-[#E5E7EB] bg-white px-3 py-2.5"
+              className="flex items-center gap-2.5 rounded-xl border border-[#EAE2DE] bg-white px-3 py-2.5"
             >
-              <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-[#FFF3ED] text-[#FF6B35]">
+              <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-[#FDF2F8] text-[#BE185D] ring-1 ring-[#FBCFE8]">
                 <Icon size={18} aria-hidden="true" />
               </span>
               <span>
-                <span className="block text-xs font-bold text-[#1A1A1A]">
+                <span className="block text-xs font-bold text-[#1C1917]">
                   {item.title}
                 </span>
-                <span className="block text-[11px] text-[#6B7280]">
+                <span className="block text-[11px] text-[#57534E]">
                   {item.subtitle}
                 </span>
               </span>

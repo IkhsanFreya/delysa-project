@@ -27,24 +27,24 @@ export function CatalogFilters({
   return (
     <aside
       aria-label="Filter produk"
-      className="rounded-xs border border-[#E5E7EB] bg-white p-4"
+      className="rounded-xl border border-[#EAE2DE] bg-white p-4"
     >
       <div className="flex items-center justify-between">
-        <p className="flex items-center gap-1.5 text-sm font-bold text-[#1A1A1A]">
+        <p className="flex items-center gap-1.5 text-sm font-bold text-[#1C1917]">
           <SlidersHorizontal size={14} aria-hidden="true" />
           Filter Produk
         </p>
         <button
           type="button"
           onClick={onReset}
-          className="text-[11px] font-semibold text-[#6B7280] underline-offset-4 hover:text-[#111111] hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-600"
+          className="text-[11px] font-semibold text-[#BE185D] underline-offset-4 hover:text-[#9D174D] hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#BE185D]"
         >
           Hapus filter
         </button>
       </div>
 
       <fieldset className="mt-4">
-        <legend className="text-[11px] font-bold tracking-wide text-[#1A1A1A] uppercase">
+        <legend className="text-[11px] font-bold tracking-wide text-[#1C1917] uppercase">
           Kategori rangkaian
         </legend>
         <div className="mt-2 flex flex-col gap-1.5">
@@ -55,9 +55,9 @@ export function CatalogFilters({
               <label
                 key={category}
                 className={cn(
-                  "flex cursor-pointer items-center gap-2 rounded-lg px-1 py-1 text-[13px] text-[#1A1A1A]",
-                  "focus-within:outline-2 focus-within:outline-offset-1 focus-within:outline-rose-600",
-                  count === 0 && !checked && "text-[#9CA3AF]",
+                  "flex cursor-pointer items-center gap-2 rounded-lg px-1.5 py-1 text-[13px] text-[#1C1917] hover:bg-[#FAF7F5]",
+                  "focus-within:outline-2 focus-within:outline-offset-1 focus-within:outline-[#BE185D]",
+                  count === 0 && !checked && "text-[#78716C]",
                 )}
               >
                 <input
@@ -65,7 +65,7 @@ export function CatalogFilters({
                   checked={checked}
                   aria-disabled={count === 0 && !checked}
                   onChange={() => onCategory(checked ? undefined : category)}
-                  className="size-4 shrink-0 accent-rose-600"
+                  className="size-4 shrink-0 accent-[#BE185D]"
                 />
                 <span className="flex-1">
                   {category}, {count} produk
@@ -76,8 +76,8 @@ export function CatalogFilters({
         </div>
       </fieldset>
 
-      <fieldset className="mt-4 border-t border-[#F1F2F4] pt-4">
-        <legend className="text-[11px] font-bold tracking-wide text-[#1A1A1A] uppercase">
+      <fieldset className="mt-4 border-t border-[#F3ECE8] pt-4">
+        <legend className="text-[11px] font-bold tracking-wide text-[#1C1917] uppercase">
           Rentang harga
         </legend>
         <div className="mt-2 grid grid-cols-2 gap-1.5">
@@ -89,11 +89,11 @@ export function CatalogFilters({
               <label
                 key={preset.label}
                 className={cn(
-                  "flex min-h-12 cursor-pointer items-center justify-center rounded-lg border px-2 py-1.5 text-center text-[11px] leading-tight font-medium text-balance",
+                  "flex min-h-11 cursor-pointer items-center justify-center rounded-lg border px-2 py-1.5 text-center text-[11px] leading-tight font-medium text-balance transition-colors",
                   active
-                    ? "border-[#111111] bg-[#111111] text-white"
-                    : "border-[#E5E7EB] bg-white text-[#1A1A1A] hover:border-[#9CA3AF]",
-                  "focus-within:outline-2 focus-within:outline-offset-1 focus-within:outline-rose-600",
+                    ? "border-[#BE185D] bg-[#BE185D] text-white"
+                    : "border-[#EAE2DE] bg-white text-[#1C1917] hover:border-[#FBCFE8] hover:bg-[#FDF2F8]",
+                  "focus-within:outline-2 focus-within:outline-offset-1 focus-within:outline-[#BE185D]",
                 )}
               >
                 <input
@@ -110,9 +110,9 @@ export function CatalogFilters({
         </div>
       </fieldset>
 
-      <div className="mt-4 rounded-xl bg-[#F8F9FA] p-3 text-[11px] leading-relaxed text-[#6B7280]">
-        <p className="font-bold text-[#1A1A1A]">Jaminan Delysa Florist</p>
-        <p>
+      <div className="mt-4 rounded-xl border border-[#FBCFE8] bg-[#FDF2F8]/60 p-3 text-[11px] leading-relaxed text-[#57534E]">
+        <p className="font-bold text-[#9D174D]">Jaminan Delysa Florist</p>
+        <p className="mt-0.5">
           Buket difoto dan dikirim via WhatsApp pemesan sebelum dikirim oleh
           kurir internal Tasikmalaya.
         </p>

@@ -78,7 +78,7 @@ export function AtelierAddons({ lines }: AtelierAddonsProps) {
               className={`group relative rounded-xl border overflow-hidden transition-all ${
                 isAdded
                   ? "border-emerald-300 bg-emerald-50"
-                  : "border-[#E5E7EB] bg-white hover:border-[#FF6B35]"
+                  : "border-[#EAE2DE] bg-white hover:border-[#BE185D]"
               }`}
             >
               <div className="aspect-square w-full overflow-hidden">

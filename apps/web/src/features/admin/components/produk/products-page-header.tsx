@@ -11,7 +11,7 @@ export function ProductsPageHeader({
   return (
     <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
       <div className="min-w-0">
-        <p className="text-[11px] font-semibold tracking-[0.16em] text-[#FF6B35] uppercase">
+        <p className="text-[11px] font-semibold tracking-[0.14em] text-[#BE185D] uppercase">
           Katalog &amp; Inventaris
         </p>
         <h1 className="mt-1 text-2xl font-extrabold tracking-tight sm:text-3xl">
@@ -37,7 +37,7 @@ export function ProductsPageHeader({
         <Button
           type="button"
           onClick={onAdd}
-          className="h-10 gap-1.5 rounded-lg bg-[#FF6B35] px-4 text-xs font-semibold text-white hover:bg-[#C2410C]"
+          className="h-10 gap-1.5 rounded-lg bg-[#BE185D] px-4 text-xs font-semibold text-white hover:bg-[#9D174D]"
         >
           <PlusIcon size={15} aria-hidden="true" />
           Tambah Produk

@@ -29,11 +29,11 @@ type RegisterFormProps = {
 };
 
 const inputClassName =
-  "h-9 rounded-xl border-[#E5E7EB] bg-[#FFFFFF] px-3.5 text-sm placeholder:text-[#9CA3AF] focus-visible:border-[#111111] focus-visible:ring-[#111111]/15 aria-invalid:border-[#DC2626] aria-invalid:ring-1 aria-invalid:ring-[#DC2626]/15";
+  "h-10 rounded-lg border-[#D6CBC6] bg-[#FFFFFF] px-3.5 text-sm placeholder:text-[#78716C] focus-visible:border-[#BE185D] focus-visible:ring-[#BE185D]/20 aria-invalid:border-[#DC2626] aria-invalid:ring-1 aria-invalid:ring-[#DC2626]/15";
 
 function RequiredMark() {
   return (
-    <span aria-hidden="true" className="text-[#FF6B35]">
+    <span aria-hidden="true" className="text-[#BE185D]">
       *
     </span>
   );
@@ -207,28 +207,24 @@ export function RegisterForm({ onSuccess }: RegisterFormProps) {
         type="submit"
         size="lg"
         disabled={isSubmitting}
-        className="h-10 w-full cursor-pointer rounded-xl bg-[#111111] text-sm font-semibold text-[#FFFFFF] hover:bg-[#2A2A2A] active:translate-y-px"
+        className="h-11 w-full rounded-lg bg-[#BE185D] text-sm font-semibold text-white hover:bg-[#9D174D] active:translate-y-px"
       >
         {isSubmitting ? "Mendaftarkan..." : "Buat Akun Sekarang"}
         {!isSubmitting ? <ArrowRight size={16} aria-hidden="true" /> : null}
       </Button>
 
-      <p className="text-center text-[9px] leading-relaxed text-[#6B7280]">
+      <p className="mt-1 text-center text-[11px] leading-relaxed text-[#57534E]">
         Dengan mendaftar, Anda menyetujui{" "}
         <Link
-          to="/"
-          onClick={(e) => e.preventDefault()}
-          aria-label="Syarat dan Ketentuan (segera hadir)"
-          className="font-medium text-[#1A1A1A] underline underline-offset-2 hover:text-[#111111]"
+          to="/about"
+          className="font-medium text-[#1C1917] underline underline-offset-2 hover:text-[#BE185D]"
         >
           Syarat &amp; Ketentuan
         </Link>{" "}
         serta{" "}
         <Link
-          to="/"
-          onClick={(e) => e.preventDefault()}
-          aria-label="Kebijakan Privasi (segera hadir)"
-          className="font-medium text-[#1A1A1A] underline underline-offset-2 hover:text-[#111111]"
+          to="/about"
+          className="font-medium text-[#1C1917] underline underline-offset-2 hover:text-[#BE185D]"
         >
           Kebijakan Privasi
         </Link>{" "}

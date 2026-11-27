@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link, useNavigate } from "@tanstack/react-router";
 import {
   Camera,
@@ -5,6 +6,7 @@ import {
   Flower2,
   RotateCcw,
   ShieldCheck,
+  SlidersHorizontal,
   Truck,
   AlertCircle,
 } from "lucide-react";
@@ -17,6 +19,12 @@ import {
   BreadcrumbSeparator,
 } from "~/components/ui/breadcrumb";
 import { Button } from "~/components/ui/button";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerTitle,
+} from "~/components/ui/drawer";
 import { Alert, AlertTitle, AlertDescription } from "~/components/ui/alert";
 import { ActiveFilterChips } from "~/features/shop/components/catalog/active-filter-chips";
 import { CatalogFilters } from "~/features/shop/components/catalog/catalog-filters";
@@ -57,14 +65,14 @@ const TRUST_ITEMS = [
  */
 export default function CatalogPage({ query }: { query: CatalogSearch }) {
   const navigate = useNavigate({ from: "/katalog" });
+  const [mobileFilterOpen, setMobileFilterOpen] = useState(false);
   const { items, total, counts, isPending, isError } = useProducts(query);
   const pageCount = Math.max(1, Math.ceil(total / CATALOG_PAGE_SIZE));
 
-  // Diverifikasi via context7: TanStack Router docs "Scroll Restoration >
-  // Preventing Scroll Restoration" — navigate({ resetScroll: false })
-  // mempertahankan posisi scroll. Dipakai untuk semua perubahan filter agar
-  // pengguna yang sedang scroll di grid tidak tiba-tiba loncat ke atas.
-  // Navigasi pagination (onPage) sengaja dibiarkan default agar scroll ke atas.
+  const activeFilterCount =
+    (query.category ? 1 : 0) +
+    (query.minPrice !== undefined || query.maxPrice !== undefined ? 1 : 0);
+
   const update = (patch: Record<string, string | number | undefined>) => {
     void navigate({
       search: (prev) => ({ ...prev, ...patch, page: 1 }),
@@ -80,16 +88,16 @@ export default function CatalogPage({ query }: { query: CatalogSearch }) {
       <main className="mx-auto max-w-7xl px-4 py-16 sm:px-6">
         <Alert variant="destructive" className="mx-auto max-w-md">
           <AlertCircle className="h-5 w-5" aria-hidden="true" />
-          <AlertTitle className="text-base font-bold text-[#1A1A1A]">
+          <AlertTitle className="text-base font-bold text-[#1C1917]">
             Gagal memuat katalog
           </AlertTitle>
-          <AlertDescription className="text-sm text-[#6B7280]">
+          <AlertDescription className="text-sm text-[#57534E]">
             Periksa koneksi lalu coba lagi.
           </AlertDescription>
           <Button
             type="button"
             onClick={resetAll}
-            className="mt-4 rounded-full bg-[#111111] text-white hover:bg-[#2A2A2A]"
+            className="mt-4 rounded-full bg-[#BE185D] text-white hover:bg-[#9D174D]"
           >
             <RotateCcw size={16} aria-hidden="true" />
             Coba lagi
@@ -103,17 +111,11 @@ export default function CatalogPage({ query }: { query: CatalogSearch }) {
   const loading = query.demo === "loading" || isPending;
 
   return (
-    <main className="mx-auto max-w-7xl px-4 pb-4 sm:px-6" aria-label="Katalog">
+    <main className="mx-auto max-w-7xl px-4 pb-6 sm:px-6" aria-label="Katalog">
       <Breadcrumb className="pt-4">
         <BreadcrumbList>
           <BreadcrumbItem>
-            <BreadcrumbLink render={<Link to="/" />}>Home</BreadcrumbLink>
-          </BreadcrumbItem>
-          <BreadcrumbSeparator />
-          <BreadcrumbItem>
-            <BreadcrumbLink render={<Link to="/katalog" />}>
-              Shop
-            </BreadcrumbLink>
+            <BreadcrumbLink render={<Link to="/" />}>Beranda</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
@@ -124,12 +126,12 @@ export default function CatalogPage({ query }: { query: CatalogSearch }) {
 
       <div className="mt-2 flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h1 className="text-xl font-extrabold tracking-tight text-[#1A1A1A] sm:text-2xl">
+          <h1 className="text-xl font-extrabold tracking-tight text-[#1C1917] sm:text-2xl">
             Katalog Rangkaian Bunga &amp; Buket Delysa
           </h1>
-          <p className="mt-0.5 text-xs text-[#6B7280] sm:text-[13px]">
-            Menampilkan {total} hasil kurasi buket &amp; rangkaian segar siap
-            kirim di Tasikmalaya
+          <p className="mt-0.5 text-xs text-[#57534E] sm:text-[13px]">
+            Menampilkan {total} pilihan buket &amp; karangan segar siap kirim di
+            Tasikmalaya
           </p>
         </div>
         <div className="flex flex-wrap gap-1.5">
@@ -139,12 +141,12 @@ export default function CatalogPage({ query }: { query: CatalogSearch }) {
           ].map((chip) => (
             <span
               key={chip.label}
-              className="inline-flex items-center gap-1.5 rounded-full border border-[#E5E7EB] bg-white px-2.5 py-1 text-[11px] font-medium text-[#1A1A1A]"
+              className="inline-flex items-center gap-1.5 rounded-full border border-[#EAE2DE] bg-white px-2.5 py-1 text-[11px] font-medium text-[#1C1917]"
             >
               <chip.icon
                 size={12}
                 aria-hidden="true"
-                className="text-emerald-700"
+                className="text-[#166534]"
               />
               {chip.label}
             </span>
@@ -164,7 +166,33 @@ export default function CatalogPage({ query }: { query: CatalogSearch }) {
         />
       </div>
 
-      <div className="mt-3">
+      <div className="mt-3 flex flex-col gap-2">
+        <div className="flex items-center justify-between gap-2 lg:hidden">
+          <Button
+            type="button"
+            variant="outline"
+            onClick={() => setMobileFilterOpen(true)}
+            className="h-10 gap-2 rounded-lg border-[#EAE2DE] bg-white px-3.5 text-xs font-semibold text-[#1C1917] hover:bg-[#FDF2F8] hover:text-[#9D174D]"
+          >
+            <SlidersHorizontal size={15} aria-hidden="true" />
+            Filter Kategori &amp; Harga
+            {activeFilterCount > 0 ? (
+              <span className="inline-flex size-5 items-center justify-center rounded-full bg-[#BE185D] text-[10px] font-bold text-white tabular-nums">
+                {activeFilterCount}
+              </span>
+            ) : null}
+          </Button>
+          {activeFilterCount > 0 ? (
+            <button
+              type="button"
+              onClick={resetAll}
+              className="text-xs font-semibold text-[#BE185D] underline-offset-4 hover:underline"
+            >
+              Reset
+            </button>
+          ) : null}
+        </div>
+
         <CatalogToolbar
           query={query}
           categories={CATALOG_CATEGORIES}
@@ -176,8 +204,44 @@ export default function CatalogPage({ query }: { query: CatalogSearch }) {
         />
       </div>
 
-      <div className="mt-3 flex flex-col gap-4 lg:flex-row lg:items-start">
-        <div className="w-full shrink-0 lg:w-60">
+      <Drawer open={mobileFilterOpen} onOpenChange={setMobileFilterOpen}>
+        <DrawerContent className="max-w-sm p-0">
+          <div className="flex h-full flex-col">
+            <div className="border-b border-[#EAE2DE] pb-3">
+              <DrawerTitle className="text-base font-bold text-[#1C1917]">
+                Filter Produk
+              </DrawerTitle>
+              <DrawerDescription className="mt-0.5 text-xs text-[#57534E]">
+                Saring buket berdasarkan kategori dan rentang harga.
+              </DrawerDescription>
+            </div>
+            <div className="min-h-0 flex-1 overflow-y-auto py-3">
+              <CatalogFilters
+                query={query}
+                categories={CATALOG_CATEGORIES}
+                counts={counts}
+                onCategory={(value) => update({ category: value })}
+                onApplyPrice={(min, max) =>
+                  update({ minPrice: min, maxPrice: max })
+                }
+                onReset={resetAll}
+              />
+            </div>
+            <div className="border-t border-[#EAE2DE] pt-3">
+              <Button
+                type="button"
+                onClick={() => setMobileFilterOpen(false)}
+                className="h-10 w-full rounded-full bg-[#BE185D] text-xs font-bold text-white hover:bg-[#9D174D]"
+              >
+                Tampilkan {total} Produk
+              </Button>
+            </div>
+          </div>
+        </DrawerContent>
+      </Drawer>
+
+      <div className="mt-4 flex flex-col gap-5 lg:flex-row lg:items-start">
+        <div className="hidden w-60 shrink-0 lg:block">
           <CatalogFilters
             query={query}
             categories={CATALOG_CATEGORIES}
@@ -195,7 +259,7 @@ export default function CatalogPage({ query }: { query: CatalogSearch }) {
             isPending={loading}
             onReset={resetAll}
           />
-          <div className="mt-4">
+          <div className="mt-5">
             <CatalogPagination
               page={query.page}
               pageCount={pageCount}
@@ -211,21 +275,21 @@ export default function CatalogPage({ query }: { query: CatalogSearch }) {
         </div>
       </div>
 
-      <section aria-label="Jaminan belanja" className="mt-6">
+      <section aria-label="Jaminan belanja" className="mt-8">
         <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {TRUST_ITEMS.map((item) => (
             <li
               key={item.title}
-              className="flex items-start gap-2.5 rounded-xl border border-[#E5E7EB] bg-white p-3"
+              className="flex items-start gap-2.5 rounded-xl border border-[#EAE2DE] bg-white p-3.5"
             >
-              <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-[#FFF3ED] text-[#FF6B35]">
+              <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-[#FDF2F8] text-[#BE185D] ring-1 ring-[#FBCFE8]">
                 <item.icon size={18} aria-hidden="true" />
               </span>
               <span>
-                <span className="block text-xs font-bold text-[#1A1A1A]">
+                <span className="block text-xs font-bold text-[#1C1917]">
                   {item.title}
                 </span>
-                <span className="block text-[11px] text-[#6B7280]">
+                <span className="block text-[11px] text-[#57534E]">
                   {item.subtitle}
                 </span>
               </span>

@@ -36,7 +36,7 @@ export function ProductsStockTabs({
           <TabsTab
             key={tab.value}
             value={tab.value}
-            className="-mb-0 rounded-full border border-[#E5E7EB] bg-white px-3 py-2 text-[11px] font-semibold text-[#4B5563] transition-colors hover:border-[#FF6B35]/40 hover:text-[#C2410C] data-[active]:border-[#FF6B35] data-[active]:bg-[#FFF3ED] data-[active]:text-[#C2410C] sm:px-4 sm:text-xs"
+            className="-mb-0 rounded-full border border-[#EAE2DE] bg-white px-3 py-2 text-[11px] font-semibold text-[#57534E] transition-colors hover:border-[#BE185D]/40 hover:text-[#9D174D] data-[active]:border-[#BE185D] data-[active]:bg-[#FDF2F8] data-[active]:text-[#9D174D] sm:px-4 sm:text-xs"
           >
             {tab.label} ({counts[tab.value]})
           </TabsTab>

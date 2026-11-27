@@ -100,7 +100,7 @@ export function CheckoutPage({ step, onStepChange }: CheckoutPageProps) {
     <Breadcrumb className="pt-4">
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink render={<Link to="/" />}>Home</BreadcrumbLink>
+          <BreadcrumbLink render={<Link to="/" />}>Beranda</BreadcrumbLink>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         <BreadcrumbItem>
@@ -164,7 +164,7 @@ export function CheckoutPage({ step, onStepChange }: CheckoutPageProps) {
           </div>
           <Button
             render={<Link to="/katalog" />}
-            className="mt-2 rounded-full bg-[#111111] text-white hover:bg-[#2A2A2A]"
+            className="mt-2 rounded-full bg-[#BE185D] text-white hover:bg-[#9D174D]"
           >
             Jelajahi Katalog
           </Button>

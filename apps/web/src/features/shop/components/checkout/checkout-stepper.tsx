@@ -51,7 +51,7 @@ export function CheckoutStepper({
                   aria-hidden="true"
                   className={cn(
                     "absolute top-5 left-[calc(50%+1.25rem)] h-0.5 w-[calc(100%-2.5rem)] rounded-full transition-colors",
-                    index < currentIndex ? "bg-[#111111]" : "bg-[#E5E7EB]",
+                    index < currentIndex ? "bg-[#BE185D]" : "bg-[#EAE2DE]",
                   )}
                 />
               )}
@@ -69,13 +69,13 @@ export function CheckoutStepper({
                 }`}
                 className={cn(
                   "relative z-10 flex size-10 items-center justify-center rounded-full border-2 transition-all",
-                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6B35] focus-visible:ring-offset-2",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#BE185D] focus-visible:ring-offset-2",
                   isCompleted &&
-                    "border-[#111111] bg-[#111111] text-white hover:bg-[#2A2A2A]",
+                    "border-[#BE185D] bg-[#BE185D] text-white hover:bg-[#9D174D]",
                   isCurrent &&
-                    "border-[#FF6B35] bg-white text-[#FF6B35] shadow-[0_0_0_4px_rgba(255,107,53,0.18)]",
+                    "border-[#BE185D] bg-[#FDF2F8] text-[#BE185D] shadow-[0_0_0_4px_rgba(190,24,93,0.16)]",
                   isFuture &&
-                    "cursor-not-allowed border-[#E5E7EB] bg-white text-[#9CA3AF]",
+                    "cursor-not-allowed border-[#EAE2DE] bg-white text-[#78716C]",
                 )}
               >
                 {isCompleted ? (

@@ -174,8 +174,8 @@ export function PaymentProofUploader({
             className={cn(
               "mt-2.5 rounded-xl border border-dashed p-3.5 text-center transition-colors",
               isDragging
-                ? "border-[#FF6B35] bg-[#FFF3ED]"
-                : "border-[#D1D5DB] bg-white",
+                ? "border-[#BE185D] bg-[#FDF2F8]"
+                : "border-[#D6CBC6] bg-white",
             )}
           >
             {previewUrl && selectedFile ? (
@@ -203,7 +203,7 @@ export function PaymentProofUploader({
               </div>
             ) : (
               <div>
-                <span className="mx-auto flex size-10 items-center justify-center rounded-full bg-[#FFF3ED] text-[#FF6B35] ring-1 ring-[#FFE1D2]">
+                <span className="mx-auto flex size-10 items-center justify-center rounded-full bg-[#FDF2F8] text-[#BE185D] ring-1 ring-[#FBCFE8]">
                   <UploadCloud size={19} aria-hidden="true" />
                 </span>
                 <p className="mt-1.5 text-xs font-semibold text-[#1A1A1A] sm:text-[13px]">
@@ -239,7 +239,7 @@ export function PaymentProofUploader({
             type="button"
             onClick={() => void handleUpload()}
             disabled={!selectedFile || isUploading}
-            className="mt-2.5 h-10 w-full rounded-lg bg-[#FF6B35] font-semibold text-[#21140D] hover:bg-[#F25C26] disabled:bg-[#E5E7EB] disabled:text-[#9CA3AF]"
+            className="mt-2.5 h-10 w-full rounded-lg bg-[#BE185D] font-semibold text-white hover:bg-[#9D174D] disabled:bg-[#EAE2DE] disabled:text-[#57534E]"
           >
             {isUploading ? (
               <Loader2

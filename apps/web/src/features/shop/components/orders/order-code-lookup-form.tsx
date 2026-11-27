@@ -49,7 +49,7 @@ export function OrderCodeLookupForm({
         />
         <Button
           type="submit"
-          className="h-10 shrink-0 rounded-lg bg-[#FF6B35] font-semibold text-[#21140D] hover:bg-[#F25C26]"
+          className="h-10 shrink-0 rounded-lg bg-[#BE185D] font-semibold text-white hover:bg-[#9D174D]"
         >
           <Search size={15} aria-hidden="true" className="mr-1.5" />
           Lacak
