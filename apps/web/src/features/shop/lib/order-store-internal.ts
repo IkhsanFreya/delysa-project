@@ -25,7 +25,10 @@ function notify() {
 }
 
 function broadcastRealtime(topic: "orders" | "products") {
-  if (typeof window === "undefined" || typeof BroadcastChannel === "undefined") {
+  if (
+    typeof window === "undefined" ||
+    typeof BroadcastChannel === "undefined"
+  ) {
     return;
   }
   try {

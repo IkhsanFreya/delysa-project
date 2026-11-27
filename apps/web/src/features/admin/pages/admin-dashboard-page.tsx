@@ -45,16 +45,11 @@ export function AdminDashboardPage({ user }: { user: AuthUser }) {
   );
 
   const orderSummary = useMemo(() => summarizeAdminOrders(orders), [orders]);
-  const productSummary = useMemo(
-    () => summarizeProducts(products),
-    [products],
-  );
+  const productSummary = useMemo(() => summarizeProducts(products), [products]);
 
   const priorityOrders = useMemo(
     () =>
-      orders
-        .filter((order) => PRIORITY_STATUSES.has(order.status))
-        .slice(0, 4),
+      orders.filter((order) => PRIORITY_STATUSES.has(order.status)).slice(0, 4),
     [orders],
   );
 
@@ -406,9 +401,9 @@ export function AdminDashboardPage({ user }: { user: AuthUser }) {
       </section>
 
       <p className="rounded-xl border border-[#EAE2DE] bg-white px-4 py-3 text-xs leading-relaxed text-[#57534E]">
-        Ringkasan pesanan dan produk saat ini membaca data store lokal admin &amp;
-        toko. Setelah endpoint pesanan dan produk API tersedia, data ini akan
-        tersinkron otomatis dengan server produksi.
+        Ringkasan pesanan dan produk saat ini membaca data store lokal admin
+        &amp; toko. Setelah endpoint pesanan dan produk API tersedia, data ini
+        akan tersinkron otomatis dengan server produksi.
       </p>
     </div>
   );

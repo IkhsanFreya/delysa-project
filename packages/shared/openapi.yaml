@@ -126,7 +126,11 @@ paths:
         - { name: category, in: query, schema: { type: string } }
         - { name: minPrice, in: query, schema: { type: integer } }
         - { name: maxPrice, in: query, schema: { type: integer } }
-        - { name: sort, in: query, schema: { type: string, enum: [termurah, termahal, terbaru] } }
+        - {
+            name: sort,
+            in: query,
+            schema: { type: string, enum: [termurah, termahal, terbaru] },
+          }
         - { name: page, in: query, schema: { type: integer, default: 1 } }
       responses:
         "200":

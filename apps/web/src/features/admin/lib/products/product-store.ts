@@ -8,9 +8,7 @@ import { isMockMode } from "~/features/shop/api/http";
 import { MOCK_PRODUCTS } from "./mock-products";
 import type { AdminProduct } from "./product.types";
 
-let adminProductsStore: AdminProduct[] = isMockMode()
-  ? [...MOCK_PRODUCTS]
-  : [];
+let adminProductsStore: AdminProduct[] = isMockMode() ? [...MOCK_PRODUCTS] : [];
 let hydratedFromApi = false;
 let syncingProducts = false;
 const listeners = new Set<() => void>();
@@ -22,7 +20,10 @@ function notifyListeners() {
 }
 
 function broadcastProductsUpdate() {
-  if (typeof window === "undefined" || typeof BroadcastChannel === "undefined") {
+  if (
+    typeof window === "undefined" ||
+    typeof BroadcastChannel === "undefined"
+  ) {
     return;
   }
   try {
